@@ -1,2 +1,2 @@
-# 8amo2_6
+# 8AMO2_6
 Redouan, Raul, Ilias
