@@ -51,10 +51,32 @@
             android:layout_width="340dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
+            android:layout_marginBottom="30dp"
             android:background="@color/colorPrimaryDark"
             android:fontFamily="@font/moonbold"
             android:textColor="@color/white"
             android:text="@string/oefen"/>
+
+        <Button
+            android:layout_width="340dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="30dp"
+            android:background="@color/colorPrimaryDark"
+            android:fontFamily="@font/moonbold"
+            android:text="@string/score"
+            android:textColor="@color/white" />
+
+        <Button
+            android:layout_width="340dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="30dp"
+            android:background="@color/colorPrimaryDark"
+            android:fontFamily="@font/moonbold"
+            android:text="@string/uitleg"
+            android:textColor="@color/white" />
+
 
     </LinearLayout>
 

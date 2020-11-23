@@ -4,4 +4,7 @@
 
     <string name="oefen">Oefen</string>
     <string name="speel">Speel</string>
+
+    <string name="score">Score</string>
+    <string name="uitleg">Uitleg</string>
 </resources>
