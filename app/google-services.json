@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "409153256663",
+    "firebase_url": "https://amazighdata.firebaseio.com",
+    "project_id": "amazighdata",
+    "storage_bucket": "amazighdata.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:409153256663:android:cb8dcda4728f26a6530492",
+        "android_client_info": {
+          "package_name": "com.example.amazighquiz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "409153256663-3qaesfrfpa721t6eetfj1iloqam3lp62.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBX-pgE3DNxUirLu0P3zK5Bv5D9etQlnO8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "409153256663-3qaesfrfpa721t6eetfj1iloqam3lp62.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
