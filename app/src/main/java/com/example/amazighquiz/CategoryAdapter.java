@@ -34,7 +34,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
     @Override
     public void onBindViewHolder(@NonNull CategoryViewholder holder, int position) {
 
-        holder.Categorieën.setText(categoryModel.get(position).getCategorieën());
+        holder.categories.setText(categoryModel.get(position).getCategorieën());
     }
 
     @Override
@@ -44,12 +44,12 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
 
     class CategoryViewholder extends RecyclerView.ViewHolder {
 
-        Button Categorieën;
+        Button categories;
 
         public CategoryViewholder(@NonNull View itemView) {
             super(itemView);
 
-            Categorieën = itemView.findViewById(R.id.Categorieën);
+            categories = itemView.findViewById(R.id.Categorieën);
         }
     }
 

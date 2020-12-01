@@ -5,6 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.LinearLayout;
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -21,6 +24,10 @@ public class CategoryActivity extends AppCompatActivity {
     DatabaseReference mbase;
     ArrayList<CategoryModel> listmodel;
 
+    LinearLayoutManager linearLayoutManager;
+
+    private static final String TAG = "CategoryActivity";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,10 +37,15 @@ public class CategoryActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recycler1);
         listmodel = new ArrayList<>();
 
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        clearData();getData();
+        //recyclerview
+        linearLayoutManager = new LinearLayoutManager(this);
+        recyclerView.setHasFixedSize(true);
+        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        recyclerView.setLayoutManager(linearLayoutManager);
+
+        getData();
+
     }
 
     public void getData(){
@@ -42,18 +54,14 @@ public class CategoryActivity extends AppCompatActivity {
 
             query.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    if (dataSnapshot.hasChildren()){
-
-                        clearData();
-
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.exists()){
                         for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                             CategoryModel categoryModel = new CategoryModel();
 
                             categoryModel.setCategorieën(snapshot.getKey());
 
                             listmodel.add(categoryModel);
-
                         }
 
                         adapter = new CategoryAdapter(getApplicationContext(),listmodel);
@@ -61,22 +69,16 @@ public class CategoryActivity extends AppCompatActivity {
                         adapter.notifyDataSetChanged();
 
                     }
+
+                    else{
+                        Log.d(TAG, "elseDataChange: no data");
+                    }
                 }
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
-
+                    Log.w(TAG, "loadPost:onCancelled", error.toException());
                 }
             });
-        }
-        public void clearData(){
-
-            if (listmodel != null) {
-                listmodel.clear();
-                if (adapter != null){
-                    adapter.notifyDataSetChanged();
-                }
-            }
-            listmodel = new ArrayList<>();
-        }
-        }
+    }
+}
