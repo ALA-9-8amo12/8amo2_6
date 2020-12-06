@@ -59,7 +59,7 @@ public class OefenenActivity extends AppCompatActivity {
                         oefenenModel.setFoto(snapshot.child("Foto").getValue(String.class));
                         oefenenModel.setGeluid(snapshot.child("Geluid").getValue(String.class));
                         oefenenModel.setWordAM(snapshot.child("WordAM").getValue(String.class));
-                        oefenenModel.setWordNL(snapshot.child("WordNL").getValue(String.class));
+                        oefenenModel.setWordNL(snapshot.getKey());
 
                         list.add(oefenenModel);
                     }

@@ -35,7 +35,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
     public void onBindViewHolder(@NonNull CategoryViewholder holder, final int position) {
 
         holder.categories.setText(categoryModel.get(position).getCategorieën());
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+        holder.categories.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context,OefenenActivity.class);
