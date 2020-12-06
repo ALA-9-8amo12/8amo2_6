@@ -1,11 +1,11 @@
 package com.example.amazighquiz;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
@@ -32,9 +32,18 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CategoryViewholder holder, int position) {
+    public void onBindViewHolder(@NonNull CategoryViewholder holder, final int position) {
 
         holder.categories.setText(categoryModel.get(position).getCategorieën());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context,OefenenActivity.class);
+                intent.putExtra("category", categoryModel.get(position).getCategorieën());
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override

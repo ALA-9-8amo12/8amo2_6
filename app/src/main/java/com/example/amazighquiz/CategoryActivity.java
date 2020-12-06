@@ -6,8 +6,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.LinearLayout;
-
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -23,7 +21,6 @@ public class CategoryActivity extends AppCompatActivity {
     CategoryAdapter adapter;
     DatabaseReference mbase;
     ArrayList<CategoryModel> listmodel;
-
     LinearLayoutManager linearLayoutManager;
 
     private static final String TAG = "CategoryActivity";
@@ -38,7 +35,6 @@ public class CategoryActivity extends AppCompatActivity {
         listmodel = new ArrayList<>();
 
 
-        //recyclerview
         linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setHasFixedSize(true);
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -53,6 +49,7 @@ public class CategoryActivity extends AppCompatActivity {
             Query query = mbase.child("Categories");
 
             query.addListenerForSingleValueEvent(new ValueEventListener() {
+
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     if (dataSnapshot.exists()){
@@ -70,7 +67,7 @@ public class CategoryActivity extends AppCompatActivity {
 
                     }
 
-                    else{
+                    else {
                         Log.d(TAG, "elseDataChange: no data");
                     }
                 }
