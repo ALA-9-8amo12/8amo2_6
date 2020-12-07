@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -22,12 +24,16 @@ public class OefenenActivity extends AppCompatActivity {
     String category;
     OefenenAdapter adapter;
 
+    TextView titlecategory;
+
     private static final String TAG = "OefenenActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_oefenen);
+
+        titlecategory = findViewById(R.id.category_title);
 
         viewPager2 = findViewById(R.id.viewpager);
         viewPager2.setOrientation(ViewPager2.ORIENTATION_HORIZONTAL);
@@ -43,6 +49,7 @@ public class OefenenActivity extends AppCompatActivity {
 
         if(getIntent().hasExtra("category")){
             category = getIntent().getStringExtra("category");
+            titlecategory.setText(category);
         }
     }
 
