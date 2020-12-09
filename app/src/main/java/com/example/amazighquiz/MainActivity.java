@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button oefenen;
+    Button oefenen, speel;
     LinearLayout linearLayout;
     Animation animationbg;
     Animation amazighanim;
@@ -27,16 +27,21 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         oefenen = findViewById(R.id.oefenen);
+        speel = findViewById(R.id.speel);
 
         oefenen.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-
-                Intent intent1 = new Intent(MainActivity.this, CategoryActivity.class);
-                startActivity(intent1);
-
+                startActivity("oefen");
             }
+        });
 
+        speel.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                startActivity("speel");
+            }
         });
 
         animationbg = AnimationUtils.loadAnimation(this, R.anim.opacity_bg_anim);
@@ -54,6 +59,12 @@ public class MainActivity extends AppCompatActivity {
         logotext.setAnimation(amazighanim);
         logo.setAnimation(animationbg);
 
+    }
+
+    public void startActivity(String methode){
+        Intent intent = new Intent(MainActivity.this, CategoryActivity.class);
+        intent.putExtra("methode", methode);
+        startActivity(intent);
     }
 
 }

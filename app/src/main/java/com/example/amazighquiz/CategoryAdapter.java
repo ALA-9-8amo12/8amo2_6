@@ -16,10 +16,12 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
 
     Context context;
     ArrayList<CategoryModel> categoryModel;
+    String methode;
 
-    public CategoryAdapter(Context context, ArrayList<CategoryModel> categorymodel) {
+    public CategoryAdapter(Context context, ArrayList<CategoryModel> categorymodel, String methode) {
         this.context = context;
         this.categoryModel = categorymodel;
+        this.methode = methode;
     }
 
 
@@ -38,7 +40,16 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
         holder.categories.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context,OefenenActivity.class);
+                Intent intent;
+
+                if(methode.equals("oefen")){
+                    intent = new Intent(context, OefenenActivity.class);
+                }
+
+                else{
+                    intent = new Intent(context, SpeelActivity.class);
+                }
+
                 intent.putExtra("category", categoryModel.get(position).getCategorieën());
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);
