@@ -5,9 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.graphics.Color;
 import android.media.AudioAttributes;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 
 import com.google.firebase.database.DataSnapshot;
@@ -32,12 +34,14 @@ public class SpeelActivity extends AppCompatActivity implements SpeelAdapter.Cli
     List<SpeelModel> pagelist;
 
     MediaPlayer mediaPlayer;
+    Handler handler;
 
     float totaal = 0;
     float waarde;
     int score;
 
     int counter = 0;
+    int wrong = 0;
 
     private SpeelAdapter.Clicklistener clicklistener;
 
@@ -53,6 +57,8 @@ public class SpeelActivity extends AppCompatActivity implements SpeelAdapter.Cli
         databaseReference = FirebaseDatabase.getInstance().getReference();
 
         speelModelList = new ArrayList<>();
+
+        handler = new Handler();
 
         getData();
     }
@@ -172,9 +178,48 @@ public class SpeelActivity extends AppCompatActivity implements SpeelAdapter.Cli
     }
 
     public void onItemClick(int position){
-        counter++;
-        createsound(speelModelList.get(counter).getSound());
-        makeAdapter();
+        RecyclerView.ViewHolder view = recyclerView.findViewHolderForAdapterPosition(position);
+        final RecyclerView.ViewHolder good = recyclerView.findViewHolderForAdapterPosition(pagelist.indexOf(speelModelList.get(counter)));
+
+        if(pagelist.indexOf(speelModelList.get(counter)) == position){
+            wrong = 0;
+            counter++;
+
+            view.itemView.findViewById(R.id.imagespeel).setBackgroundColor(Color.GREEN);
+
+            handler.postDelayed(new Runnable() {
+                public void run() {
+                    createsound(speelModelList.get(counter).getSound());
+                    makeAdapter();
+                }
+            }, 100);
+        }
+
+        else{
+            wrong++;
+
+            view.itemView.findViewById(R.id.imagespeel).setBackgroundColor(Color.RED);
+
+            if(wrong == 3){
+                wrong = 0;
+                counter++;
+
+                handler.postDelayed(new Runnable() {
+                    public void run() {
+                        good.itemView.findViewById(R.id.imagespeel).setBackgroundColor(Color.GREEN);
+                    }
+                }, 200);
+
+
+
+                handler.postDelayed(new Runnable() {
+                    public void run() {
+                        createsound(speelModelList.get(counter).getSound());
+                        makeAdapter();
+                    }
+                }, 500);
+            }
+        }
 
     }
 }
