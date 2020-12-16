@@ -12,4 +12,16 @@
         android:layout_height="match_parent"
         android:layout_marginHorizontal="10dp"/>
 
+    <Button
+        android:id="@+id/beluister"
+        android:layout_width="230dp"
+        android:layout_height="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_margin="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="@string/beluister"
+        android:background="@color/colorAmazigh"
+        android:textColor="@color/white" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

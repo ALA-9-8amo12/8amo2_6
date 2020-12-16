@@ -11,6 +11,8 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -28,6 +30,7 @@ import java.util.Random;
 public class SpeelActivity extends AppCompatActivity implements SpeelAdapter.Clicklistener{
 
     RecyclerView recyclerView;
+    Button button;
 
     DatabaseReference databaseReference;
     List<SpeelModel> speelModelList;
@@ -53,6 +56,7 @@ public class SpeelActivity extends AppCompatActivity implements SpeelAdapter.Cli
         setContentView(R.layout.activity_speel);
 
         recyclerView = findViewById(R.id.recycler);
+        button = findViewById(R.id.beluister);
 
         databaseReference = FirebaseDatabase.getInstance().getReference();
 
@@ -61,6 +65,7 @@ public class SpeelActivity extends AppCompatActivity implements SpeelAdapter.Cli
         handler = new Handler();
 
         getData();
+        buttonbeluister();
     }
 
     public String getCategory(){
@@ -220,6 +225,14 @@ public class SpeelActivity extends AppCompatActivity implements SpeelAdapter.Cli
                 }, 500);
             }
         }
+    }
 
+    public void buttonbeluister(){
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mediaPlayer.start();
+            }
+        });
     }
 }
