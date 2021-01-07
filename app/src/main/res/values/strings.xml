@@ -1,12 +1,13 @@
 <resources>
     <string name="app_name">amazigh quiz</string>
     <string name="menu">Menu</string>
-
     <string name="oefen">Oefen</string>
     <string name="speel">Speel</string>
-
     <string name="score">Score</string>
     <string name="uitleg">Uitleg</string>
-
     <string name="beluister">Beluister</string>
+
+    <string name="Spelen"> Zodra je op de Spelen pagina bent krijg je 6 verschillende foto te zien en je krijgt een woord te horen. De bedoeling is dat je het juiste plaatje bij het woord aanklikt om door te gaan, Na 3 keer de verkeerde foto te hebben geklikt ga je automatisch door naar de volgende vraag.</string>
+    <string name="Oefenen"> Zodra je op de Oefenen Pagina bent krijg je 1 foto te zien met het NL woord en het woord in het Amazigh, Naast dat kan je ook het geluid horen. En kan je zo oefenen met de woorden.</string>
+    <string name="Score"> Zodra je op de Score Pagina bent krijg je de scores te zien die zijn behaald in de afgelopen gespeelde potjes. </string>
 </resources>

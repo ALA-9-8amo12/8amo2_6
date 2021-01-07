@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SpeelActivity"></activity>
+        <activity android:name=".UitlegActivity"></activity>
+        <activity android:name=".SpeelActivity" />
         <activity android:name=".OefenenActivity" />
         <activity android:name=".CategoryActivity" />
         <activity android:name=".MainActivity">

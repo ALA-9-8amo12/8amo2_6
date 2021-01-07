@@ -42,11 +42,11 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
             public void onClick(View view) {
                 Intent intent;
 
-                if(methode.equals("oefen")){
+                if (methode.equals("oefen")){
                     intent = new Intent(context, OefenenActivity.class);
                 }
 
-                else{
+                else {
                     intent = new Intent(context, SpeelActivity.class);
                 }
 

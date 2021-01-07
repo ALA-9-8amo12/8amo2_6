@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button oefenen, speel;
+    Button oefenen, speel, uitleg;
     LinearLayout linearLayout;
     Animation animationbg;
     Animation amazighanim;
@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
         oefenen = findViewById(R.id.oefenen);
         speel = findViewById(R.id.speel);
+        uitleg = findViewById(R.id.uitleg);
 
         oefenen.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -43,6 +44,16 @@ public class MainActivity extends AppCompatActivity {
                 startActivity("speel");
             }
         });
+
+        uitleg.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, UitlegActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
         animationbg = AnimationUtils.loadAnimation(this, R.anim.opacity_bg_anim);
         amazighanim = AnimationUtils.loadAnimation(this, R.anim.text_amazigh_anim);
